@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lista desplegable con buscador utilizando Select2</title>
+    <!-- Incluir la biblioteca Select2 a través de un CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.full.min.js"></script>
+    <style>
+      .container {
+  font-family: Arial, sans-serif;
+  width: 100%; /* Ancho actualizado */
+  font-size: 15px;
+}
+
+        .row {
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 10px;
+        }
+
+        .row2 {
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 10px;
+            background-color: rgba(82, 94, 94, 0.034);
+        }
+
+        .col-6 {
+            width: 50%;
+            padding-right: 10px;
+        }
+
+        .col-6:last-child {
+            padding-right: 0px;
+        }
+
+        .label {
+            font-weight: bold;
+            color: black;
+        }
+
+        .label {
+  width: 200px; /* Ancho fijo agregado */
+  font-weight: bold;
+  display: inline-block; /* display: inline-block agregado */
+}
+
+.value {
+  display: inline-block; /* display: inline-block agregado */
+}
+
+
+
+        .value span {
+            font-weight: normal;
+        }
+
+        .value:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .select2-container {
+            min-width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="value">
+                <b>Asunto: </b>Solicitud Paso a Producción <span class="valor-tipo">Estándar</span> Modelo <span
+                    class="valor-Modelo">Soporte</span> <span class="valor-APP">BDPR04-COMCLIENTES-V1</span> - 
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="value">
+                Buen día,
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="value">
+                Solicito su amable colaboración con el paso a Producción <span class="valor-tipo">Estándar</span> Modelo
+                <span class="valor-Modelo">Soporte</span> del aplicativo <span
+                    class="valor-APP">BDPR04-COMCLIENTES-V1</span>.
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="value">
+                Se envía adjunto el formato y visto bueno.
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="label">Modelo de atención:</div>
+            <div class="value"><span class="valor-Modelo">Soporte</span></div>
+        </div>
+
+        <div class="row">
+            <div class="label">Cambio Relacionado:</div>
+            <div class="value"></div>
+        </div>
+
+        <div class="row">
+            <div class="label">Consecutivo Pruebas:</div>
+            <div class="value"></div>
+        </div>
+        <div class="row">
+            <div class="label">Tipo:</div>
+            <div class="value"><span class="valor-tipo">Estándar</span></div>
+        </div>
+
+<br>
+<br>
+<br>
+
+
+        <div class="row2" >
+            <div class="label">Tipo:</div>
+            <div class="value" style="min-width: 180px;">
+                <select name="tipo" data-live-search="1" class="select2">
+                    <option value="estandar">Estándar</option>
+                    <option value="normal">Normal</option>
+                    <option value="emergente">Emergente</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row2">
+            <div class="label">Modelo:</div>
+            <div class="value" style="min-width: 180px;">
+                <select name="Modelo" data-live-search="1" class="select2">
+                    <option value="Soporte">Soporte</option>
+                    <option value="Evolutivo">Evolutivo</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row2">
+            <div class="label">APP:</div>
+            <div class="value" style="min-width: 180px;">
+                <select name="APP" data-live-search="1" class="select2">
+                    <option value="Home">Home</option>
+                    <option value="SWPR82-VitalSys-V1">SWPR82-VitalSys-V1</option>
+                    <option value="SWPR48-Sifus-V3">SWPR48-Sifus-V3</option>
+                    <option value="WSPR07-WSCOMIPS-V1">WSPR07-WSCOMIPS-V1</option>
+                    <option value="SWPR100-Oraltec-V2">SWPR100-Oraltec-V2</option>
+                    <option value="WSPR09-ServiciosOraltec-V2">WSPR09-ServiciosOraltec-V2</option>
+                    <option value="SWPR26-Vivienda-V10">SWPR26-Vivienda-V10</option>
+                    <option value="SWPR52-LabSys-V1">SWPR52-LabSys-V1</option>
+                    <option value="SWPR85-SISFAM-V1">SWPR85-SISFAM-V1</option>
+                    <option value="WSPR06-WSSISFAM-V1">WSPR06-WSSISFAM-V1</option>
+                    <option value="SWPR109-PIS-V1">SWPR109-PIS-V1</option>
+                    <option value="SWPR81-CompensarEAI-V2">SWPR81-CompensarEAI-V2</option>
+                    <option value="WSPR13-WSeguridad-V1">WSPR13-WSeguridad-V1</option>
+                    <option value="WSPR15-WSCOMENTIDADES-V1">WSPR15-WSCOMENTIDADES-V1</option>
+                    <option value="WSPR05-WSCOMFINAN-V1">WSPR05-WSCOMFINAN-V1</option>
+                    <option value="SWPR19-RISK-V1">SWPR19-RISK-V1</option>
+                    <option value="SWPR57-TRANSAR-V1">SWPR57-TRANSAR-V1</option>
+                    <option value="SWPR90-ADMINUS-V1">SWPR90-ADMINUS-V1</option>
+                    <option value="SWPR115-SysVac-V1">SWPR115-SysVac-V1</option>
+                    <option value="SWPR108-GestionClientes-V2">SWPR108-GestionClientes-V2</option>
+                    <option value="UGPR26-Framework-V4">UGPR26-Framework-V4</option>
+                    <option value="UGPR28-FRAMEWORKESB-V1">UGPR28-FRAMEWORKESB-V1</option>
+                    <option value="SWPR116-CuboERP-V1">SWPR116-CuboERP-V1</option>
+                    <option value="SWPR84-GIS-V1">SWPR84-GIS-V1</option>
+                    <option value="SWPR50-Orion-V1">SWPR50-Orion-V1</option>
+                    <option value="WSPR17-WsIntegraLab-V1">WSPR17-WsIntegraLab-V1</option>
+                    <option value="PDPR25-Proceventos-V1">PDPR25-Proceventos-V1</option>
+                    <option value="SWPR117-AdminCorp-V1">SWPR117-AdminCorp-V1</option>
+                    <option value="PRYCCF001-ServiciosEventos-V1">PRYCCF001-ServiciosEventos-V1</option>
+                    <option value="WSPR18-LogApp-V1">WSPR18-LogApp-V1</option>
+                    <option value="WSPR19-Recursos-V1">WSPR19-Recursos-V1</option>
+                    <option value="WSPR20-Cotización-V1">WSPR20-Cotización-V1</option>
+                    <option value="WSPR21-ProductoServicio-V1">WSPR21-ProductoServicio-V1</option>
+                    <option value="WSPR22-Colaborador-V1">WSPR22-Colaborador-V1</option>
+                    <option value="SWPR30-PYS-V1">SWPR30-PYS-V1</option>
+                    <option value="WSPR02-WSCOMCAJA-V1">WSPR02-WSCOMCAJA-V1</option>
+                    <option value="WSPR08-WSCERCAJA-V1">WSPR08-WSCERCAJA-V1</option>
+                    <option value="SWEX39-Documentar-V1">SWEX39-Documentar-V1</option>
+                    <option value="SWEX45-RegistroTiempos-V1">SWEX45-RegistroTiempos-V1</option>
+                    <option value="SWPR72-SIKAS-V2">SWPR72-SIKAS-V2</option>
+                    <option value="SWPR102-ElPortico-V1">SWPR102-ElPortico-V1</option>
+                    <option value="PDPR10-ProcesosChaplin-V4">PDPR10-ProcesosChaplin-V4</option>
+                    <option value="SWPR15-RUAF-V1">SWPR15-RUAF-V1</option>
+                    <option value="PDPR27-Estadisticas-V1">PDPR27-Estadisticas-V1</option>
+                    <option value="SWPR107-Vivienda-V1">SWPR107-Vivienda-V1</option>
+                    <option value="WSPR03-WSCOMADMO-V1">WSPR03-WSCOMADMO-V1</option>
+                    <option value="SWPR107-SISVIV-V1">SWPR107-SISVIV-V1</option>
+                    <option value="SWEX76-WMS-V1">SWEX76-WMS-V1</option>
+                    <option value="SWEX50-Seven-V12">SWEX50-Seven-V12</option>
+                    <option value="SWPR119-PortalPlanComplementario-V1">SWPR119-PortalPlanComplementario-V1</option>
+                    <option value="WSPR14-WsCajasSinFronteras-V1">WSPR14-WsCajasSinFronteras-V1</option>
+                    <option value="SWEX79-IGCONBANK_SF-V1">SWEX79-IGCONBANK_SF-V1</option>
+                    <option value="SWEX49-KACTUS-V14">SWEX49-KACTUS-V14</option>
+                    <option value="BDPR01-Corporativa-V1">BDPR01-Corporativa-V1</option>
+                    <option value="WSPR23-AdministrarCotizacion-V1">WSPR23-AdministrarCotizacion-V1</option>
+                    <option value="WSPR24-ParametrizacionTransversal-V1">WSPR24-ParametrizacionTransversal-V1</option>
+                    <option value="SWEX81-ECOLLECT-V1">SWEX81-ECOLLECT-V1</option>
+                    <option value="WSPR25-CuentaPorCobrar-V1">WSPR25-CuentaPorCobrar-V1</option>
+                    <option value="WSPR27-Homologacion-V1">WSPR27-Homologacion-V1</option>
+                    <option value="WSPR28-PRICING-V1">WSPR28-PRICING-V1</option>
+                    <option value="SWPR80-WSCOMPENSAR-V1">SWPR80-WSCOMPENSAR-V1</option>
+                    <option value="SWPR125-PORTALCAJASSINFRONTERAS-V1">SWPR125-PORTALCAJASSINFRONTERAS-V1</option>
+                    <option value="SWPR126-PORTALUNIMOS-V1">SWPR126-PORTALUNIMOS-V1</option>
+                    <option value="SWPR128-WWW.COMPENSAR-V1">SWPR128-WWW.COMPENSAR-V1</option>
+                    <option value="SWPR104-COPASO-V2">SWPR104-COPASO-V2</option>
+                    <option value="SWPR129-AGENCIACOLOCACION-V1">SWPR129-AGENCIACOLOCACION-V1</option>
+                    <option value="CM-Configuration Management">CM-Configuration Management</option>
+                    <option value="WSPR31-PROCESARCOTIZACION-V1">WSPR31-PROCESARCOTIZACION-V1</option>
+                    <option value="WSPR32-GESTIONARSOPORTESPAGO-V1">WSPR32-GESTIONARSOPORTESPAGO-V1</option>
+                    <option value="WSPR33-CONDICIONESCOMERCIALES-V1">WSPR33-CONDICIONESCOMERCIALES-V1</option>
+                    <option value="WSPR35-CALENDARIO-V1">WSPR35-CALENDARIO-V1</option>
+                    <option value="SWPR131-CUBO_CSC_THU-V1">SWPR131-CUBO_CSC_THU-V1</option>
+                    <option value="SWPR132-CLIENTESPAS-BPM-V1">SWPR132-CLIENTESPAS-BPM-V1</option>
+                    <option value="SWEX36-ZEUS-V14">SWEX36-ZEUS-V14</option>
+                    <option value="SWPR133-CONTRATOS-V1">SWPR133-CONTRATOS-V1</option>
+                    <option value="SWPR135-SALUD_PC-V1">SWPR135-SALUD_PC-V1</option>
+                    <option value="SWPR136-SAP VERTICAL SALUD-V1">SWPR136-SAP VERTICAL SALUD-V1</option>
+                    <option value="SWPR140-PORTALDEPORTES-V1">SWPR140-PORTALDEPORTES-V1</option>
+                    <option value="ARQ-ArquitecturaSoluciones">ARQ-ArquitecturaSoluciones</option>
+                    <option value="MODPR01-ModeloCanonico-V1">MODPR01-ModeloCanonico-V1</option>
+                    <option value="SWEX110-SOLUQUIM-V1">SWEX110-SOLUQUIM-V1</option>
+                    <option value="SWEX111-SINCOERP-V1">SWEX111-SINCOERP-V1</option>
+                    <option value="SWPR141-SECUREPOL-V1">SWPR141-SECUREPOL-V1</option>
+                    <option value="pry-pruebaCVS3">pry-pruebaCVS3</option>
+                    <option value="pry-pruebaCVS09-2">pry-pruebaCVS09-2</option>
+                    <option value="PRYCCF002-RED-EVENTOS-V1">PRYCCF002-RED-EVENTOS-V1</option>
+                    <option value="pry-pruebaCVS1-Agile">pry-pruebaCVS1-Agile</option>
+                    <option value="SWPR56-INTRANETCOMPENSAR-V2">SWPR56-INTRANETCOMPENSAR-V2</option>
+                    <option value="prueba-2hhg">prueba-2hhg</option>
+                    <option value="SWPR142-SEGURIDAD PORTALES-V1">SWPR142-SEGURIDAD PORTALES-V1</option>
+                    <option value="prueba-3hhg">prueba-3hhg</option>
+                    <option value="prueba-4hhg">prueba-4hhg</option>
+                    <option value="SWPR143-FOSFEC-V2">SWPR143-FOSFEC-V2</option>
+                    <option value="BDPR04-COMCLIENTES-V1">BDPR04-COMCLIENTES-V1</option>
+                    <option value="Probando_AF">Probando_AF</option>
+                    <option value="SWEX120-CONCILIACIONDEAPORTES">SWEX120-CONCILIACIONDEAPORTES</option>
+                    <option value="SWPR49-GestionDisponibilidad">SWPR49-GestionDisponibilidad</option>
+                    <option value="WSPR50-GestionPrestacion">WSPR50-GestionPrestacion</option>
+                    <option value="WSPR47-MicroservicioGeneracionPDF">WSPR47-MicroservicioGeneracionPDF</option>
+                    <option value="MRED-Eventos">MRED-Eventos</option>
+                    <option value="PruebaDocumentacion">PruebaDocumentacion</option>
+                    <option value="SWEX05-IntegracionOnBase">SWEX05-IntegracionOnBase</option>
+                    <option value="WSPR51-Escenario">WSPR51-Escenario</option>
+                    <option value="WSPR52-Paquete">WSPR52-Paquete</option>
+                    <option value="WSPR54-ProcesosKyron">WSPR54-ProcesosKyron</option>
+                    <option value="WSPR55-CatalogoEntidades">WSPR55-CatalogoEntidades</option>
+                    <option value="BDPR05-BD_Kyron">BDPR05-BD_Kyron</option>
+                    <option value="WSPR56-ServiciosIntegraciónTIBCO">WSPR56-ServiciosIntegraciónTIBCO</option>
+                    <option value="SWEX124-HubRecursos">SWEX124-HubRecursos</option>
+                    <option value="BDPR06 – BD Aportes Caja">BDPR06 – BD Aportes Caja</option>
+                    <option value="SWPR143-FOSFEC-V3">SWPR143-FOSFEC-V3</option>
+                    <option value="WSPR56-INTEG-TIBCO">WSPR56-INTEG-TIBCO</option>
+                    <option value="SWEX133-Menusplus">SWEX133-Menusplus</option>
+                    <option value="SWEX134-Portal Financiero">SWEX134-Portal Financiero</option>
+                    <option value="SWPR160-PortalSalud">SWPR160-PortalSalud</option>
+                    <option value="SWPR161-SaludEnLinea">SWPR161-SaludEnLinea</option>
+                    <option value="SWPR158-NugetServer">SWPR158-NugetServer</option>
+                    <option value="SWPR162-Sistema_Alertas">SWPR162-Sistema_Alertas</option>
+                    <option value="Portafolio_Soluciones_TI">Portafolio_Soluciones_TI</option>
+                    <option value="ModeloCanonico_json">ModeloCanonico_json</option>
+                    <option value="SWPR163-SCORING">SWPR163-SCORING</option>
+                    <option value="IniciativasRelacionamiento">IniciativasRelacionamiento</option>
+                    <option value="PDPR28-PRESUPUESTO">PDPR28-PRESUPUESTO</option>
+                    <option value="SWPR164-API_GestionClientes">SWPR164-API_GestionClientes</option>
+                    <option value="SWPR169-Hola_Vivienda">SWPR169-Hola_Vivienda</option>
+                    <option value="SWPR171-API_ConvertidorDocumentos">SWPR171-API_ConvertidorDocumentos</option>
+                    <option value="Sitio_Plantilla">Sitio_Plantilla</option>
+                    <option value="SWPR175-SAT">SWPR175-SAT</option>
+                    <option value="SWPR179-Presupuesto">SWPR179-Presupuesto</option>
+                    <option value="SWPR181-SINCRONIZADOR-ECOSISTEMA-NUEVO-CLIENTES">SWPR181-SINCRONIZADOR-ECOSISTEMA-NUEVO-CLIENTES</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('select[name="tipo"]').select2();
+            $('select[name="APP"]').select2();
+            $('select[name="Modelo"]').select2();
+
+            $('select[name="tipo"]').on('change', function () {
+                var valorSeleccionado = $(this).val();
+                $('.valor-tipo').text(valorSeleccionado.charAt(0).toUpperCase() + valorSeleccionado.slice(1));
+            });
+
+            $('select[name="Modelo"]').on('change', function () {
+                var valorSeleccionado = $(this).val();
+                $('.valor-Modelo').text(valorSeleccionado.charAt(0).toUpperCase() + valorSeleccionado.slice(1));
+            });
+
+            $('select[name="APP"]').on('change', function () {
+                var valorSeleccionado = $(this).val();
+                $('.valor-APP').text(valorSeleccionado.charAt(0).toUpperCase() + valorSeleccionado.slice(1));
+            });
+        });
+    </script>
