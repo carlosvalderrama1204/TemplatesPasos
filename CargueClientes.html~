@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizar en Grilla</title>
+    <!-- Incluir CSS de Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="mb-4">Convertidor Hexadecimal a Grilla</h2>
+            <div class="form-group">
+                <label for="inputVarBinary">Pegue el valor hexadecimal aquí:</label>
+                <textarea class="form-control" id="inputVarBinary" rows="5"></textarea>
+            </div>
+            <button class="btn btn-primary mb-4" onclick="convertHexToGrid()">Convertir a Grilla</button>
+            <div id="gridContainer"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function convertHexToText(hexValue) {
+        let stringValue = '';
+        for (let i = 0; i < hexValue.length; i += 2) {
+            stringValue += String.fromCharCode(parseInt(hexValue.substr(i, 2), 16));
+        }
+        return stringValue;
+    }
+
+    function convertHexToGrid() {
+        // Obtener el valor hexadecimal del textarea (sin el prefijo 0x)
+        let hexValue = document.getElementById('inputVarBinary').value.replace(/^0x/, '');
+        
+        // Convertir el valor hexadecimal a texto
+        let stringValue = convertHexToText(hexValue);
+
+        // Separar las líneas usando el delimitador de salto de línea adecuado
+        let rows = stringValue.split(/\r?\n/);
+        let tableHTML = '<table class="table table-bordered table-striped">';
+        
+        for(let row of rows) {
+            tableHTML += '<tr>';
+            // Separar las celdas por ;
+            let cells = row.split(';');
+            for(let cell of cells) {
+                tableHTML += `<td>${cell}</td>`;
+            }
+            tableHTML += '</tr>';
+        }
+
+        tableHTML += '</table>';
+        
+        // Mostrar la tabla en el contenedor
+        document.getElementById('gridContainer').innerHTML = tableHTML;
+    }
+</script>
+<!-- Incluir JS de Bootstrap y dependencias -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
