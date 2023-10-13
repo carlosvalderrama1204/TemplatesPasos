@@ -5,20 +5,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visualizar en Grilla</title>
-    <!-- Incluir CSS de Bootstrap -->
+    <!-- Incluir CSS de Bootstrap, DataTables y Buttons extension -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.bootstrap4.min.css">
+    <style>
+        .btn-orange {
+            background-color: #ff6600;
+            color: white;
+        }
+
+        .btn-orange:hover {
+            background-color: #e55c00;
+            color: white;
+        }
+
+        thead th {
+            background-color: #ff6600;
+            color: white;
+        }
+    </style>
 </head>
 <body class="bg-light">
 
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-12">
-            <h2 class="mb-4">Convertidor Hexadecimal a Grilla</h2>
+            <h2 class="mb-4" style="color: #ff6600;">Convertidor Hexadecimal a Grilla</h2>
             <div class="form-group">
                 <label for="inputVarBinary">Pegue el valor hexadecimal aquí:</label>
                 <textarea class="form-control" id="inputVarBinary" rows="5"></textarea>
             </div>
-            <button class="btn btn-primary mb-4" onclick="convertHexToGrid()">Convertir a Grilla</button>
+            <button class="btn btn-orange mb-4" onclick="convertHexToGrid()">Convertir a Grilla</button>
             <div id="gridContainer"></div>
         </div>
     </div>
@@ -42,28 +60,52 @@
 
         // Separar las líneas usando el delimitador de salto de línea adecuado
         let rows = stringValue.split(/\r?\n/);
-        let tableHTML = '<table class="table table-bordered table-striped">';
+        let tableHTML = '<table class="table table-bordered table-striped" id="dataTable">';
         
-        for(let row of rows) {
-            tableHTML += '<tr>';
+        for(let index in rows) {
+            if(index == 0) {
+                tableHTML += '<thead><tr>';
+            } else {
+                tableHTML += '<tr>';
+            }
+            
             // Separar las celdas por ;
-            let cells = row.split(';');
+            let cells = rows[index].split(';');
             for(let cell of cells) {
                 tableHTML += `<td>${cell}</td>`;
             }
-            tableHTML += '</tr>';
+            
+            if(index == 0) {
+                tableHTML += '</tr></thead><tbody>';
+            } else {
+                tableHTML += '</tr>';
+            }
         }
 
-        tableHTML += '</table>';
+        tableHTML += '</tbody></table>';
         
         // Mostrar la tabla en el contenedor
         document.getElementById('gridContainer').innerHTML = tableHTML;
+
+        // Convertir la tabla en una DataTable con filtrado y botón de exportación
+        $('#dataTable').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'csv'
+            ]
+        });
     }
 </script>
-<!-- Incluir JS de Bootstrap y dependencias -->
+<!-- Incluir JS de Bootstrap, jQuery, DataTables, Buttons y dependencias -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.bootstrap4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
 
 </body>
 </html>
